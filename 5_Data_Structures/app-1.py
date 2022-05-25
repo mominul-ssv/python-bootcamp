@@ -124,7 +124,7 @@ for index, letter in enumerate(letters):
 
 print("# ================================== Adding or Removing Items ================================== #")
 
-letters = ["a", "b", "c"]
+letters = ["a", "b", "b", "c"]
 
 # adding an item at the end of the list
 letters.append("d")
@@ -140,6 +140,10 @@ print(letters)
 
 # removing an item at a specific position
 letters.pop(0)
+print(letters)
+
+# removing a specific item (the code below will remove only the first 'b' from the list)
+letters.remove("b")
 print(letters)
 
 # removing an item with a given input (if we have multiple 'b' then only the first one will be removed)
@@ -180,7 +184,7 @@ numbers = [3, 51, 2, 8, 6]
 numbers.sort()
 print(numbers)
 
-# sort the numbers in 'descding' order
+# sort the numbers in 'descending' order
 # the sort() method takes two parameters. 'key' and 'sort'
 numbers.sort(reverse=True)
 print(numbers)
@@ -189,9 +193,10 @@ print("=============================================")
 numbers = [3, 51, 2, 8, 6]
 
 # if the use sorted() method, it will return a new list that is sorted
-print(numbers)
+# the old list will not be modified
 print(sorted(numbers))
 print(sorted(numbers, reverse=True))
+print(numbers)
 
 print("=============================================")
 items = [
@@ -286,11 +291,11 @@ items = [
     ("Product3", 12)
 ]
 
-# the functional programming approach
+# the functional programming approach (map)
 prices = list(map(lambda item: item[1], items))
 print(prices)
 
-# the list comprehension approach
+# the list comprehension approach ()
 prices = [item[1] for item in items]
 print(prices)
 

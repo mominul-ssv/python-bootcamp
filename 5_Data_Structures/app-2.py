@@ -19,22 +19,22 @@ print("# ================================== Stacks =============================
 # LIFO (Last In - First Out)
 
 # push
-browing_session = []
-browing_session.append(1)
-browing_session.append(2)
-browing_session.append(3)
-print(browing_session)
+browsing_session = []
+browsing_session.append(1)
+browsing_session.append(2)
+browsing_session.append(3)
+print(browsing_session)
 
 # pop
-last = browing_session.pop()
+last = browsing_session.pop()
 print(last)
-print(browing_session)
-print("redirect", browing_session[-1])
+print(browsing_session)
+print("redirect", browsing_session[-1])
 
 # check if the stack is empty
 # 0, "", [] all of these defines something empty
 # not browsing_session = not empty = False
-if not browing_session:
+if not browsing_session:
     print("disable")
 else:
     print("keep back-button enabled")
