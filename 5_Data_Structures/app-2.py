@@ -5,14 +5,20 @@ from sys import getsizeof
 from numpy import number
 
 print("# ================================== Zip Function ================================== #")
+# zip function takes one or more iterables
+# so we can pass (a string), (a list), and (a tuple)
 list1 = [1, 2, 3]
 list2 = [10, 20, 30]
+list3 = (3, 5, 7)
 
 # [(1, 10), (2, 10), (3, 30)]
 zipped = list((zip(list1, list2)))
 print(zipped)
 
 zipped = list((zip("abc", list1, list2)))
+print(zipped)
+
+zipped = list((zip(list3, list1, list2)))
 print(zipped)
 
 print("# ================================== Stacks ================================== #")
@@ -72,7 +78,7 @@ print(type(point))
 point = 1
 print(type(point))
 
-# python will treat this as a tuple
+# python will treat this as a tuple (add a trailing comma)
 point = 1,
 print(type(point))
 
@@ -150,7 +156,7 @@ print("# ================================== Arrays =============================
 
 numbers = array('i', [0, 2, 3])
 
-# change items by index
+# change item of index 0
 numbers[0] = 1
 
 # add at the end of the array
@@ -165,8 +171,7 @@ print(numbers)
 numbers.pop()
 print(numbers)
 
-# remove a specific item fro the array
-# make sure to put it insidea an if-else block
+# remove a specific item from the array
 numbers.remove(45)
 print(numbers)
 
@@ -175,10 +180,13 @@ numbers = [1, 1, 2, 3, 4]
 
 # we use set to remove duplicates
 # convert the array to a set
-unique = set(numbers)
-print(unique)
+uniques = set(numbers)
+print(uniques)
 
 # defining a set
+# second = {} is will be viewed as a dictionary declaration
+# second = [] is will be viewed as a list declaration
+# second = {0} is will be viewed as a set
 second = {1, 7}
 print(second)
 
@@ -208,7 +216,7 @@ print(first & second)
 print(first - second)
 
 # symmetric difference
-# this will return return it numbers which are not in both of the sets
+# this will return the items which are not in both sets
 print(first ^ second)
 
 # note: we cannot access the elements of set using index
@@ -228,7 +236,7 @@ print(point)
 # printing an element
 print(point["x"])
 
-# chaning the value of a key
+# changing the value of a key
 point["x"] = 10
 print(point)
 
@@ -237,16 +245,18 @@ point["z"] = 20
 print(point)
 
 print("=============================================")
-# if the key is not matched then it will return an error; thus, we have to use if-else condition
+# if we write an invalid key then it will return an error
+# thus, we have to use if-else condition to handle the error
+# or, we could use the get() method
 if "a" in point:
     print(point["a"])
 else:
     print("Item doesn't exit")
 
-# simplified
+# simplified (returns 'None')
 print(point.get("a"))
 
-# return 0 if no item is found
+# return 0 if no item is found (here, 0 is the default argument)
 print(point.get("a", 0))
 
 # delete an item
@@ -269,29 +279,60 @@ for key, value in point.items():
     print(key, value)
 
 print("# ================================== Dictionary Comprehensions ================================== #")
+# list
 values = []
 for x in range(5):
     values.append(x * 2)
+print("list: ")
 print(values)
 
+# list comprehension
 values = []
-values = {x * 2 for x in range(5)}
+values = [x * 2 for x in range(5)]
+print("list comprehension: ")
 print(values)
 
 print("=============================================")
-values = []
-values = {x: x * 2 for x in range(5)}
+# set
+values = {0}
+for x in range(5):
+    values.add(x * 2)
+print("set: ")
 print(values)
 
+# set comprehension
+values = {}
+values = {x * 2 for x in range(5)}
+print("set comprehension: ")
+print(values)
+
+print("=============================================")
+# dictionary
 values = {}
 for x in range(5):
     values[x] = x * 2
+print("dictionary: ")
+print(values)
+
+# dictionary comprehension
+values = {}
+values = {x: x * 2 for x in range(5)}
+print("dictionary comprehension: ")
 print(values)
 
 print("# ================================== Generator Expressions ================================== #")
 # we use this generator object when we have a large dataset
 values = []
 
+# we get a list
+values = [x * 2 for x in range(5)]
+print(values)
+
+for x in values:
+    print(x)
+
+print("=============================================")
+# we get a generator object
 values = (x * 2 for x in range(5))
 print(values)
 
@@ -302,9 +343,13 @@ print("=============================================")
 values = []
 
 # the size is 112 and it is fixed.
-# note: we cannot use len() function for generator object
+# the size of the generator object remains constant
+# we cannot use len() function for generator object, because generator object won't store all the items in the memory
+values = (x * 2 for x in range(100))
+print("gen-1:", getsizeof(values))
+
 values = (x * 2 for x in range(100000))
-print("gen:", getsizeof(values))
+print("gen-2:", getsizeof(values))
 
 values = [x * 2 for x in range(100000)]
 print("list:", getsizeof(values))
@@ -313,7 +358,11 @@ print("# ================================== Unpacking Operator =================
 # unpacking list
 numbers = [1, 2, 3]
 
+# printing the list
 print(numbers)
+
+# printing individual numbers in our list
+# we are using the unpacking operator
 print(*numbers)
 
 print("=============================================")

@@ -1,3 +1,5 @@
+# Question: find the most repeated characters in the string.
+
 from pprint import pprint
 sentence = "This is a common interview question"
 
