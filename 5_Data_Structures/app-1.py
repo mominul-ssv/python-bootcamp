@@ -90,7 +90,7 @@ for letter in letters:
 
 print("=================")
 # to get the index of each item use 'enumerate' built-in function
-# 'enumerate' keywork returns an 'enumerate' object which is iterable
+# 'enumerate' keyword returns an 'enumerate' object which is iterable
 # in each iteration, the 'enumerate' object will give us a 'tuple'
 # a tuple is like a list but read-only
 for letter in enumerate(letters):
